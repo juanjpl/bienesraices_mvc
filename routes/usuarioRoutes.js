@@ -4,13 +4,26 @@ const router = express.Router();
 
 
 //Routing
-router.get("/", function(req,res){
-    res.json({msg:"Hola mundo en express desde index"});
+router.get("/login",(req,res)=>{
+    res.render("auth/login",{
+        autenticado:true
+    });
 })
 
-
-router.get("/nosotros", function(req,res){
-    res.send("Informacion de nosotros")
+/*
+router.post("/",(req,res)=>{
+    res.json({msg:"Respuesta POST"})
 })
+*/
+
+/*
+router.route("/")
+.get(function(req,res){
+    res.json({msg:"respuesta GET"});
+})
+.post(function(req,res){
+    res.json({msg:"respuesta POST"});
+})
+    */
 
 export default router;
