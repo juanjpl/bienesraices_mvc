@@ -1,24 +1,13 @@
-const express= require("express");
+// ------ > const express= require("express");  // common js en package.json
+
+import express from "express";
+import usuarioRoutes from "./routes/usuarioRoutes.js";
 
 //crear la app
 const app = express();
 
 //Routing
-app.get("/", function(req,res){
-    res.send("Hola mundo en express desde index")
-})
-
-app.get("/json", function(req,res){
-    res.json({msg:"Hola mundo con un json"})
-})
-
-app.get("/json", function(req,res){
-    res.render({msg:"Hola mundo con un json"})
-})
-
-app.get("/nosotros", function(req,res){
-    res.send("Informacion de nosotros")
-})
+app.get("/", usuarioRoutes);
 
 
 //Definir un puerto y arrancar el proyecto
