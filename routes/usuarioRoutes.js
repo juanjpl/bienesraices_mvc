@@ -5,8 +5,8 @@ const router = express.Router();
 
 
 //Routing
-router.get("/login", formularioLogin)
-router.get("/registro",formularioRegistro)
+router.get("/login", formularioLogin);
+router.get("/registro",formularioRegistro);
 
 /*
 router.post("/",(req,res)=>{
