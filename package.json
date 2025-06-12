@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node --watch index.js",
     "server": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css": "postcss public/css/tailwind.css -o public/css/app.css --watch"
   },
   "keywords": [
     "MVC",
@@ -19,10 +20,15 @@
     "Sequelize"
   ],
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.8",
     "express": "^5.1.0",
+    "postcss-cli": "^11.0.1",
     "pug": "^3.0.3"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "autoprefixer": "^10.4.21",
+    "nodemon": "^3.1.10",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^3.4.17"
   }
 }
