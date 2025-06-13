@@ -73,6 +73,7 @@ const registrar = async (req, res) => {
       usuario: {
         nombre: req.body.nombre,
         email: req.body.email,
+        
       },
     });
   }
