@@ -22,7 +22,7 @@ await transport.sendMail({
     html:`
             <p>Hola ${nombre}, comprueba tu cuenta en bienesRaices.com</p>
             <p>Tu cuenta ya está lista, solo debes confirmarla en el siguiente enlace:</p>
-            <a href="${process.env.BACKEND_URL ?? 3000}/auth/confirmar/${token}" >Confirmar Cuenta</a>
+            <a href="${process.env.BACKEND_URL}:${process.env.PORT ?? 3000 }/auth/confirmar/${token}" >Confirmar Cuenta</a>
 
             
             <p>Si tu no creaste esta cuetna, puedes ignorar el mensaje</p>
@@ -30,6 +30,37 @@ await transport.sendMail({
 })
 }
 
+const emailOlvidePassword = async (datos)=>{
+  const transport = nodemailer.createTransport({
+    host:process.env.EMAIL_HOST,
+    port:process.env.EMAIL_PORT,
+    auth:{
+      user:process.env.EMAIL_USER,
+      pass:process.env.EMAIL_PASS
+
+    }
+  })
+
+  const {email, nombre, token} = datos;
+
+  //Enviar el email
+await transport.sendMail({
+    from : "BienesRaices.com",
+    to: email,
+    suject:"Reestablece tu password en BienesRaices.com",
+    text:"Reestablece tu password en BienesRaices.com",
+    html:`
+            <p>Hola ${nombre}, has solicitado reestablecer tu password en BienesRaices.com</p>
+            <p>Sigue el siguiente enlace para generar un password nuevo:</p>
+            <a href="${process.env.BACKEND_URL}:${process.env.PORT ?? 3000 }/auth/olvide-password/${token}" >Reestablecer Password</a>
+
+            
+            <p>Si tu no solicitaste el camio de password, puedes ignorar el mensaje</p>
+    `
+})
+}
+
 export {
-    emailRegistro 
+    emailRegistro ,
+    emailOlvidePassword
 }
